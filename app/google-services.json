@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "283989381636",
+    "project_id": "covidtest-c2951",
+    "storage_bucket": "covidtest-c2951.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283989381636:android:97023e937444e09327db51",
+        "android_client_info": {
+          "package_name": "com.example.covidtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283989381636-snj8et2n6evli43dgm88si2mlrju90la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdwe8ea2Fwl9JTNCna0KXnMExGXXOgLiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283989381636-snj8et2n6evli43dgm88si2mlrju90la.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
