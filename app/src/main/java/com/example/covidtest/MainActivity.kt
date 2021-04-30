@@ -7,7 +7,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 
-//import kotlin.android.synthetic.main.activity_firestore.*
 
 class MainActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
@@ -15,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //val db = FirebaseFirestore.getInstance()
         val showButton = findViewById<Button>(R.id.btnLogin)
         val usrName = findViewById<EditText>(R.id.et_username)
         val usrPass = findViewById<EditText>(R.id.et_password)
@@ -24,40 +22,49 @@ class MainActivity : AppCompatActivity() {
         showButton.setOnClickListener {
 
             // Getting the user input
-            val testval = " "
 
-            val text = usrName.text.toString()
+            val user = usrName.text.toString()
             val pass = usrPass.text.toString()
             val textv = tv.text.toString()
 
-            readDataFromFirestore(text, textv, pass)
+            readDataFromFirestore(user, textv, pass)
 
         }
 
     }
 
-    private fun readDataFromFirestore(text : String, textv : String, pass : String){
+    private fun readDataFromFirestore(user : String, textv : String, pass : String) {
 
 
-        db.collection("Users").document(text)
-                .get()
-                .addOnSuccessListener { document ->
-                    try {
-                        if (document != null) {
-                            Log.d(textv, "DocumentSnapshot read successfully!")
-                            val testval = document.data?.get("testval")
-                            val password = document.data?.get("password")
-                            val intent = Intent(this, )
+        db.collection("Users").document(user)
+            .get()
+            .addOnSuccessListener { document ->
+                try {
+                    val testval = document.data?.get("test result")
+                    val password = document.data?.get("password")
+                    val email = document.data?.get("email")
+                    val zip = document.data?.get("zipcode")
+                    val first = document.data?.get("first")
+                    val last = document.data?.get("last")
+                    if (document != null && password == pass) {
+                        Log.d(textv, "DocumentSnapshot read successfully!")
+                            val intent = Intent(this, ProfileActivity::class.java).apply {
+                                putExtra("Test", testval.toString())
+                                putExtra("Email", email.toString())
+                                putExtra("Zipcode", zip.toString())
+                                putExtra("First", first.toString())
+                                putExtra("Last", last.toString())
+                            }
+                            startActivity(intent)
                         } else {
                             Log.d(textv, "No such document!")
                         }
-                    }catch (ex: Exception){
+                    } catch (ex: Exception){
                         Log.e(textv, ex.message.toString())
                     }
-                }.addOnFailureListener {
-                    e -> Log.e(textv, "Error writing document", e)
+                }.addOnFailureListener { e ->
+                    Log.e(textv, "Error writing document", e)
                 }
+            }
     }
 
-
-}
