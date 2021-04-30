@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val showButton = findViewById<Button>(R.id.btnLogin)
+        val signupButton = findViewById<Button>(R.id.btnSignUp)
         val usrName = findViewById<EditText>(R.id.et_username)
         val usrPass = findViewById<EditText>(R.id.et_password)
         val tv = findViewById<TextView>(R.id.textView)
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
             val textv = tv.text.toString()
 
             readDataFromFirestore(user, textv, pass)
+
+        }
+        signupButton.setOnClickListener {
+
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
 
         }
 
