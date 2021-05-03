@@ -16,6 +16,7 @@ class CovidInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_covid_info)
         //val backButton = findViewById<Button>(R.id.)
         val locations = findViewById<TextView>(R.id.locList_tv)
+
         val tv = findViewById<TextView>(R.id.textView20)
         val zip = intent.getStringExtra("Zipcode").toString()
 
@@ -41,8 +42,7 @@ class CovidInfoActivity : AppCompatActivity() {
                             Log.d(textv, "DocumentSnapshot read successfully!")
 
 
-
-                            
+                            //textView20
 
                         } else {
                             Log.d(textv, "No such document!")
