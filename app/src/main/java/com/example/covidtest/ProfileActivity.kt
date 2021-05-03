@@ -23,7 +23,9 @@ class ProfileActivity : AppCompatActivity() {
 
         covidbtn.setOnClickListener {
 
-            val intent = Intent(this, CovidInfoActivity::class.java)
+            val intent = Intent(this, CovidInfoActivity::class.java).apply {
+                putExtra("Zipcode", zip.toString())
+            }
             startActivity(intent)
         }
 
