@@ -18,15 +18,15 @@ class ProfileActivity : AppCompatActivity() {
         first.text = intent.getStringExtra("First")
         val last = findViewById<TextView>(R.id.last_tv)
         last.text = intent.getStringExtra("Last")
-        val zip = findViewById<TextView>(R.id.zip_tv)
-        zip.text = intent.getStringExtra("Zipcode")
+        val zip1 = findViewById<TextView>(R.id.zip_tv)
+        zip1.text = intent.getStringExtra("Zipcode")
 
         covidbtn.setOnClickListener {
 
-            val intent = Intent(this, CovidInfoActivity::class.java).apply {
-                putExtra("Zipcode", zip.toString())
+            val intent1 = Intent(this@ProfileActivity, CovidInfoActivity::class.java).apply {
+                putExtra("Zipcode", zip1.text)
             }
-            startActivity(intent)
+            startActivity(intent1)
         }
 
     }

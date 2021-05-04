@@ -7,6 +7,20 @@
     tools:context=".CovidInfoActivity">
 
     <TextView
+        android:id="@+id/zipcode_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="7dp"
+        android:text="ZIP:"
+        app:layout_constraintBottom_toTopOf="@+id/infolist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locList_tv"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,11 +124,25 @@
         android:id="@+id/zipcode_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="7dp"
         android:text="ZIP:"
         app:layout_constraintBottom_toTopOf="@+id/infolist"
-        app:layout_constraintTop_toBottomOf="@+id/locList_tv"
-        tools:layout_editor_absoluteX="30dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locList_tv" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginRight="236dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/infolist"
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

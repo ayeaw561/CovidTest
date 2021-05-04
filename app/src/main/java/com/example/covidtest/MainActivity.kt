@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         }
         signupButton.setOnClickListener {
 
-            val intent = Intent(this, SignUpActivity::class.java)
+            val intent = Intent(this@MainActivity, SignUpActivity::class.java)
             startActivity(intent)
 
         }
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                     val testval = document.data?.get("test result")
                     val password = document.data?.get("password")
                     val email = document.data?.get("email")
-                    val zip = document.data?.get("zipcode")
+                    val zip3 = document.data?.get("zipcode")
                     val first = document.data?.get("first")
                     val last = document.data?.get("last")
                     if (document != null && password == pass) {
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                             val intent = Intent(this, ProfileActivity::class.java).apply {
                                 putExtra("Test", testval.toString())
                                 putExtra("Email", email.toString())
-                                putExtra("Zipcode", zip.toString())
+                                putExtra("Zipcode", zip3.toString())
                                 putExtra("First", first.toString())
                                 putExtra("Last", last.toString())
                             }

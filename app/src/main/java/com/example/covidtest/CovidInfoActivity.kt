@@ -1,9 +1,10 @@
 package com.example.covidtest
 
 import androidx.appcompat.app.AppCompatActivity
+//import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+//import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -13,39 +14,39 @@ class CovidInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_covid_info)
         //val backButton = findViewById<Button>(R.id.backbutton)
-        val locations = findViewById<TextView>(R.id.locList_tv)
+        //val locations = findViewById<TextView>(R.id.locList_tv)
 
 
 
-        val tv = findViewById<TextView>(R.id.zipcode_tv)
+        val tv = findViewById<TextView>(R.id.textView2)
         val zip = intent.getStringExtra("Zipcode").toString()
 
         val textv = tv.text.toString()
-
 
         readDataFirestore(zip, textv)
 
     }
 
     private fun readDataFirestore(zip : String, textv : String) {
-
-
-        db.collection("Locations").document(zip)
-                .get()
+        db.collection("Locations").document("RI")
+                .collection(zip)
+                .document("cvs").get()
                 .addOnSuccessListener { document ->
                     try {
                         val address = document.data?.get("address").toString()
                         val city = document.data?.get("city").toString()
                         val name = document.data?.get("name").toString()
                         val vaccination = document.data?.get("vaccination").toString()
+                        val zipcode = document.data?.get("zip").toString()
                         if (document != null) {
                             Log.d(textv, "DocumentSnapshot read successfully!")
-
+                            val vZip = findViewById<TextView>(R.id.zipcode_tv2)
                             val vAddress = findViewById<TextView>(R.id.cAddress)
                             val vCity = findViewById<TextView>(R.id.cCity)
                             val vName = findViewById<TextView>(R.id.cName)
                             val vVaccination = findViewById<TextView>(R.id.cVaccination)
 
+                            vZip.text = zipcode
                             vAddress.text = address
                             vCity.text = city
                             vName.text = name

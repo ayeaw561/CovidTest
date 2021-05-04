@@ -28,18 +28,18 @@ class SignUpActivity : AppCompatActivity() {
         val first = usrFirst.text.toString()
         val last = usrLast.text.toString()
         val password = usrPass.text.toString()
-        val zip = usrZip.text.toString()
+        val zip2 = usrZip.text.toString()
             val textv = tv.text.toString()
 
-            dataToFirestore(email, first, last, password, zip, userN, textv)
+            dataToFirestore(email, first, last, password, zip2, userN, textv)
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val intent2 = Intent(this@SignUpActivity, MainActivity::class.java)
+            startActivity(intent2)
 
         }
     }
 
-private fun dataToFirestore(email : String, first : String, last : String, password : String, zip : String, userN : String, textv : String) {
+private fun dataToFirestore(email : String, first : String, last : String, password : String, zip2 : String, userN : String, textv : String) {
 
     val doc = hashMapOf(
         "email" to email,
@@ -47,7 +47,7 @@ private fun dataToFirestore(email : String, first : String, last : String, passw
         "last" to last,
         "password" to password,
         "test result" to "negative",
-        "zipcode" to zip
+        "zipcode" to zip2
     )
 
     db.collection("Users").document(userN)
