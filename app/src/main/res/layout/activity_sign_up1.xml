@@ -15,12 +15,13 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress" />
+
     <EditText
         android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Email"
+        android:hint="Username"
         android:inputType="text" />
 
     <EditText
