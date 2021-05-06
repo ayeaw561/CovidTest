@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 class SignUpActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
@@ -33,13 +35,18 @@ class SignUpActivity : AppCompatActivity() {
 
             dataToFirestore(email, first, last, password, zip2, userN, textv)
 
-            val intent2 = Intent(this@SignUpActivity, MainActivity::class.java)
-            startActivity(intent2)
-
         }
     }
 
-private fun dataToFirestore(email : String, first : String, last : String, password : String, zip2 : String, userN : String, textv : String) {
+private fun dataToFirestore(
+    email: String,
+    first: String,
+    last: String,
+    password: String,
+    zip2: String,
+    userN: String,
+    textv: String
+) {
 
     val doc = hashMapOf(
         "email" to email,
@@ -50,11 +57,20 @@ private fun dataToFirestore(email : String, first : String, last : String, passw
         "zipcode" to zip2
     )
 
-    db.collection("Users").document(userN)
-        .set(doc)
-        .addOnSuccessListener { Log.d(textv, "DocumentSnapshot successfully written!") }
-        .addOnFailureListener { e -> Log.w(textv, "Error writing document", e) }
-
+    //val rootRef = FirebaseFirestore.getInstance()
+    val docIdRef = db.collection("Users").document(userN)
+    docIdRef.get().addOnCompleteListener { document ->
+        if (document.isSuccessful) {
+            Toast.makeText(this@SignUpActivity, "Username Already In Use", Toast.LENGTH_SHORT).show()
+                } else {
+            db.collection("Users").document(userN)
+                .set(doc)
+                .addOnSuccessListener { Log.d(textv, "DocumentSnapshot successfully written!") }
+                .addOnFailureListener { e -> Log.w(textv, "Error writing document", e) }
+            val intent2 = Intent(this@SignUpActivity, MainActivity::class.java)
+            startActivity(intent2)
+        }
+            }
 
 }
 }

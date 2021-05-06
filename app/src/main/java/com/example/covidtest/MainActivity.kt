@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                             }
                             startActivity(intent)
                         } else {
+                        Toast.makeText(this@MainActivity, "Invalid Login", Toast.LENGTH_SHORT).show()
                             Log.d(textv, "No such document!")
                         }
                     } catch (ex: Exception){
