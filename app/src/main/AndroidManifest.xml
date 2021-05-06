@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidTest">
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".CovidInfoActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
